@@ -6,7 +6,7 @@ function makejson(){
   peers=$(curl -s $3/peers | jq '.peers | length')
   diskavail=$(df -P . | awk 'NR==2{print $2}')
   diskfree=$(df -P . | awk 'NR==2{print $4}')
-  cheque=$(curl -s http://localhost:1635/chequebook/cheque | jq '.lastcheques | length')
+  cheque=$(curl -s $3/chequebook/cheque | jq '.lastcheques | length')
   json='{"name":"'"$name"'","peers":'$peers',"diskavail":'$diskavail',"diskfree":'$diskfree',"cheque":'$cheque'}'
 }
 
