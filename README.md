@@ -1,15 +1,15 @@
 ![2021-03-11_09-59-38](https://user-images.githubusercontent.com/3895507/110748305-98f32c00-8250-11eb-9098-75f2c5b89597.png)
 <br><br><br>
-## The nodes names must be different, otherwise it won't work!<br>
+## 请保证每个节点的名称是唯一的! 本分叉是为一机多节点设计的，兼容docker<br>
 <br>
 
 
-#### Install dockers of Grafana, Mysql and go-binary swarmon service to the SERVER
+#### 安装监控服务，仅需在主服务器上安装
 
 **Debian:**
 ```
 cd /root
-wget https://github.com/doristeo/SwarmMonitoring/raw/main/docker/instdeb.sh
+wget https://github.com/ytx1991/SwarmMonitoring/raw/main/docker/instdeb.sh
 chmod +x instdeb.sh
 ./instdeb.sh
 ```
@@ -17,7 +17,7 @@ chmod +x instdeb.sh
 **Ubuntu:**
 ```
 cd /root
-wget https://github.com/doristeo/SwarmMonitoring/raw/main/docker/instubu.sh
+wget https://github.com/ytx1991/SwarmMonitoring/raw/main/docker/instubu.sh
 chmod +x instubu.sh
 ./instubu.sh
 ```
@@ -29,19 +29,27 @@ Never.
 
 Default login/password to Grafana is admin/admin. 
 
-#### Install a script that sends data to the server for EACH NODE
+#### 在每个节点服务器上安装脚本
 ```
-cd /root
-wget https://github.com/doristeo/SwarmMonitoring/raw/main/send.sh
+mkdir swarm_data_collect && cd swarm_data_collect
+wget https://github.com/ytx1991/SwarmMonitoring/raw/main/send.sh
+wget https://github.com/ytx1991/SwarmMonitoring/raw/main/run_datacollector.sh
 chmod +x send.sh
+chmod +x run_datacollector.sh
 ```
-test all ```/root/send.sh http://public_IP_of_your_server:8080```, if ok you will see the data on your Grafana-server http://public_IP_of_your_server:3000.
+
+编辑run_datacollector.sh，添加每个在当前服务器上的节点。每行一个节点
+
 ```
-crontab -e
+nohup watch -n 10 "./send.sh http://localhost:8080 bee1 http://localhost:1635" &
 ```
-add this string ``` */10 * * * * /root/send.sh http://public_IP_of_your_server:8080 > /dev/null 2>&1``` <br>
-and restart cron ```systemctl restart cron``` <br>
-The node will send data to the monitoring server every 10 minutes.<br>
+http://localhost:8080 为监控服务ip
+
+bee1 为节点名称，需唯一
+
+http://localhost:1635  对应节点debug api
+
+具体格式参加内部说明
 
 
 
