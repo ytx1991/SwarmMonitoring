@@ -19,7 +19,7 @@ services:
       restart: always
   grafana:
       container_name: grafana_swarm
-      image: doristeo/grafana_swarm:latest
+      image: ytx1991/grafana_swarm:latest
       volumes:
            - /root/swarmon/grafana:/var/lib/grafana
       ports:
@@ -27,7 +27,7 @@ services:
       restart: always
   swarmmon:
       container_name: swarmmon1
-      image: doristeo/swarmmon
+      image: ytx1991/swarmmon
       ports:
           - 8080:8080
       restart: always

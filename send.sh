@@ -1,6 +1,7 @@
 #!/bin/bash
 [ -z ${DEBUG_API+x} ] && DEBUG_API=$3
 totalAmount=0
+MIN_BZZ_UNIT=1000000000
 function getPeers(){
       	curl -s "$DEBUG_API/chequebook/cheque" | jq -r '.lastcheques | .[].peer'
 }
@@ -58,7 +59,7 @@ function makejson(){
   cheque=$(curl -s $DEBUG_API/chequebook/cheque | jq '.lastcheques | length')
   totalBZZ=$(curl -s $DEBUG_API/chequebook/balance  | jq '.totalBalance')
   availableBZZ=$(curl -s $DEBUG_API/chequebook/balance  | jq '.availableBalance')
-  json='{"name":"'"$name"'","peers":'$peers',"diskavail":'$diskavail',"diskfree":'$diskfree',"cheque":'$cheque',"totalBZZ":'$totalBZZ',"availableBZZ":'$availableBZZ',"totalUncashed":'$(countUncashed)'}'
+  json='{"name":"'"$name"'","peers":'$peers',"diskavail":'$diskavail',"diskfree":'$diskfree',"cheque":'$cheque',"totalbzz":'$(($totalBZZ/$MIN_BZZ_UNIT))',"availablebzz":'$(($availableBZZ/$MIN_BZZ_UNIT))',"totaluncashed":'$(($(countUncashed)/$MIN_BZZ_UNIT))'}'
   echo $json
 }
 

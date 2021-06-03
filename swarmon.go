@@ -38,7 +38,10 @@ type Logdata struct {
 	Peers     int    `json:"peers"`
 	Diskavail int    `json:"diskavail"`
 	Diskfree  int    `json:"diskfree"`
-        Cheque    int    `json:"cheque"`
+	Totalbzz  int    `json:"totalbzz"`
+	Availablebzz  int    `json:"availablebzz"`
+	Totaluncashed  int    `json:"totaluncashed"`
+    Cheque    int    `json:"cheque"`
 }
 
 //---------------------------------------------------------------------------------------------------------------------------------
@@ -52,8 +55,8 @@ func postFunction(w http.ResponseWriter, r *http.Request) {
 	var logdata Logdata
 	json.NewDecoder(r.Body).Decode(&logdata)
 
-	s := "INSERT nodes(name, peers, diskavail, diskfree, cheque) VALUES ('" + logdata.Name + "', " + strconv.Itoa(logdata.Peers) + ", " +
-		strconv.Itoa(logdata.Diskavail) + ", " + strconv.Itoa(logdata.Diskfree) + ", " + strconv.Itoa(logdata.Cheque) + ")"
+	s := "INSERT nodes(name, peers, diskavail, diskfree, cheque, totalbzz, availablebzz, totaluncashed) VALUES ('" + logdata.Name + "', " + strconv.Itoa(logdata.Peers) + ", " +
+		strconv.Itoa(logdata.Diskavail) + ", " + strconv.Itoa(logdata.Diskfree) + ", " + strconv.Itoa(logdata.Cheque) + ", " + strconv.Itoa(logdata.Totalbzz) + ", " + strconv.Itoa(logdata.Availablebzz) + ", " + strconv.Itoa(logdata.Totaluncashed) + ")"
 	//fmt.Println(s)
 	_, err = database.Exec(s)
 	if err != nil {

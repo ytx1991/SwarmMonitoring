@@ -6,9 +6,9 @@ CREATE TABLE `nodes` (
   `peers` int NOT NULL,
   `diskavail` bigint DEFAULT NULL,
   `diskfree` bigint DEFAULT NULL,
-  `totalBZZ` bigint DEFAULT NULL,
-  `availableBZZ` bigint DEFAULT NULL,
-  `totalUncashed` bigint DEFAULT NULL,
+  `totalbzz` bigint DEFAULT NULL,
+  `availablebzz` bigint DEFAULT NULL,
+  `totaluncashed` bigint DEFAULT NULL,
   `cheque` int NOT NULL,
   KEY `index1` (`name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
