@@ -1,0 +1,16 @@
+version: "3.9"
+services:
+  grafana:
+      container_name: grafana_swarm
+      image: grafana/grafana
+      ports:
+          - 3000:3000
+      restart: always
+  prometheus:
+      container_name: prometheus
+      image: prom/prometheus
+      volumes:
+          - ~/swarmon/prometheus:/etc/prometheus
+      ports:
+          - 9090:9090
+      restart: always
