@@ -7,6 +7,8 @@
 ### 安装监控服务，仅需在主服务器上安装
 
 #### 安装Docker及Docker Compose (已安装的可跳过)
+请确保3000和9090端口没被占用且可被外部访问
+
 这里仅给出Ubuntu安装命令，其他系统可自行搜索安装教程
 ```
 sudo apt-get update
@@ -24,7 +26,6 @@ wget https://github.com/ytx1991/SwarmMonitoring/raw/main/server/install_server.s
 chmod +x install_server.sh
 ./install_server.sh
 ```
-请确保3000和9090端口没被占用且可被外部访问
 
 2.修改/root/swarmon/prometheus/prometheus.yml文件。
 
@@ -56,6 +57,9 @@ cd ~/swarmon && sudo docker-compose up -d
 监控面版及数据源应该已经预设好，直接打开便可使用。
 
 ### 下载安装集群监控客户端 （每个有节点的服务器都需要安装）
+
+请确保3903端口没被占用且可被外部访问
+
 1.运行以下命令下载安装监控客户端
 ```
 wget https://github.com/ytx1991/SwarmMonitoring/raw/main/client/install_client.sh
