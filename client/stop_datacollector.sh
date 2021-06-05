@@ -1,3 +1,3 @@
 #!/bin/bash
-pkill -f *get_metrics.sh*
-pkill -f *mtail*
+pkill -f get_metrics
+pkill -f mtail

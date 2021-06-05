@@ -3,14 +3,14 @@ services:
   grafana:
       container_name: grafana_swarm
       image: grafana/grafana
-      ports:
-          - 3000:3000
+      network_mdoe: "host"
+      volumes:
+          - /root/swarmon/grafana:/var/lib/grafana
       restart: always
   prometheus:
       container_name: prometheus
       image: prom/prometheus
       volumes:
           - /root/swarmon/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
-      ports:
-          - 9090:9090
+      network_mdoe: "host"
       restart: always

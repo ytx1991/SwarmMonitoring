@@ -2,6 +2,7 @@
 
 mkdir ~/swarmon
 sudo mkdir /root/swarmon/prometheus
+sudo mkdir /root/swarmon/grafana
 cd ~/swarmon
 wget https://github.com/ytx1991/SwarmMonitoring/raw/main/server/grafana/dashboard.json
 wget https://github.com/ytx1991/SwarmMonitoring/raw/main/server/docker-compose.yaml
