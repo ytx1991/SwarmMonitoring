@@ -1,12 +1,12 @@
 ![效果](screenshot.png)
 <br><br><br>
-## 请保证每个节点的名称是唯一的! 本方案兼容一机多节点及Docker<br>
-## 目前仅支持Linux系统<br>
-## 有问题欢迎到 Discord https://discord.gg/PJwJzCkT4W 咨询
+### 请保证每个节点的名称是唯一的! 本方案兼容一机多节点及Docker<br>
+### 目前仅支持Linux系统<br>
+### 有问题欢迎到 Discord https://discord.gg/PJwJzCkT4W 咨询
 
-#### 安装监控服务，仅需在主服务器上安装
+### 安装监控服务，仅需在主服务器上安装
 
-####安装Docker及Docker Compose (已安装的可跳过)
+#### 安装Docker及Docker Compose (已安装的可跳过)
 这里仅给出Ubuntu安装命令，其他系统可自行搜索安装教程
 ```
 sudo apt-get update
@@ -16,7 +16,7 @@ sudo chmod +x /usr/local/bin/docker-compose
 sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
 ```
 
-####下载安装集群监控服务端
+#### 下载安装集群监控服务端
 1.执行以下命令
 ```
 wget https://github.com/ytx1991/SwarmMonitoring/raw/main/server/install_server.sh
@@ -54,7 +54,7 @@ cd ~/swarmon && sudo docker-compose up -d
 
 监控面版及数据源应该已经预设好，直接打开便可使用。
 
-#### 在每个节点服务器上安装 （若主服务器有节点则也需要安装）
+### 下载安装集群监控客户端 （每个有节点的服务器都需要安装）
 1.运行以下命令下载安装监控客户端
 ```
 wget https://github.com/ytx1991/SwarmMonitoring/raw/main/client/install_client.sh
