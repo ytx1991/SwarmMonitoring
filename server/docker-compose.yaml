@@ -3,7 +3,7 @@ services:
   grafana:
       container_name: grafana_swarm
       image: grafana/grafana
-      network_mdoe: "host"
+      network_mode: "host"
       volumes:
           - /root/swarmon/grafana:/var/lib/grafana
       restart: always
@@ -12,5 +12,5 @@ services:
       image: prom/prometheus
       volumes:
           - /root/swarmon/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
-      network_mdoe: "host"
+      network_mode: "host"
       restart: always
