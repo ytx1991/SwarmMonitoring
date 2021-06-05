@@ -1,16 +1,16 @@
-gauge peers by x
+gauge peers by node
 gauge diskavail
 gauge diskfree
-gauge cheque by x
-gague total_bzz by x
-gague available_bzz by x
-gauge total_uncashed by x
-/^{"name":"(?P<nodeName>\.+)","peers":(?P<peers>\d+),"diskavail":(?P<diskavail>\d+),"diskfree":(?P<diskfree>\d+),"cheque":(?P<cheque>\d+),"total_bzz":(?P<total_bzz>\d+),"available_bzz":(?P<available_bzz>\d+),"total_uncashed":(?P<diskavail>\d+)}$/ {
-    peers[$nodeName] = $peers
+gauge cheque by node
+gauge total_bzz by node
+gauge available_bzz by node
+gauge total_uncashed by node
+/^\{"name":"(?P<node>.+)","peers":(?P<peers>\d+),"diskavail":(?P<diskavail>\d+),"diskfree":(?P<diskfree>\d+),"cheque":(?P<cheque>\d+),"total_bzz":(?P<total_bzz>\d+),"available_bzz":(?P<available_bzz>\d+),"total_uncashed":(?P<total_uncashed>\d+)\}$/ {
+    peers[$node] = $peers
     diskavail = $diskavail
     diskfree = $diskfree
-    cheque[$nodeName] = $cheque
-    total_bzz[$nodeName] = $total_bzz
-    available_bzz[$nodeName] = $available_bzz
-    total_uncashed[$nodeName] = $total_uncashed
+    cheque[$node] = $cheque
+    total_bzz[$node] = $total_bzz
+    available_bzz[$node] = $available_bzz
+    total_uncashed[$node] = $total_uncashed
 }

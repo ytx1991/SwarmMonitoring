@@ -13,4 +13,4 @@ do
     nohup watch -n 10 "~/swarmon_client/get_metrics.sh ${nodes[$i]} ${names[$i]} > ~/swarmon_client/logs/${names[$i]}.log" &
 done
 
-nohup ~/swarmon_client/mtail --progs ~/swarmon_client --logs ~/swarmon_client/logs/*.log --poll_interval 10000ms &
+nohup ~/swarmon_client/mtail --progs ~/swarmon_client/progs --logs ~/swarmon_client/logs/*.log --poll_interval 10000ms &
