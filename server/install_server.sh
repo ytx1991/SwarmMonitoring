@@ -1,9 +1,9 @@
 #!/bin/sh
 
-mkdir ~/swarmon
+mkdir ~/swarmon_server
 sudo mkdir /root/swarmon/prometheus
 sudo mkdir /root/swarmon/grafana
-cd ~/swarmon
+cd ~/swarmon_server
 wget https://github.com/ytx1991/SwarmMonitoring/raw/main/server/grafana/grafana.db
 sudo cp grafana.db /root/swarmon/grafana/grafana.db
 wget https://github.com/ytx1991/SwarmMonitoring/raw/main/server/docker-compose.yaml
