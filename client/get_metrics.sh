@@ -54,12 +54,33 @@ function countUncashed() {
 function makejson(){
   echo "Populating $DEBUG_API data..."
   peers=$(curl -s $DEBUG_API/peers | jq '.peers | length')
+  if [ -z "$peers" ]
+  then
+        peers=0
+  fi
   diskavail=$(df -P . | awk 'NR==2{print $2}')
   diskfree=$(df -P . | awk 'NR==2{print $4}')
   cheque=$(curl -s $DEBUG_API/chequebook/cheque | jq '.lastcheques | length')
+  if [ -z "$cheque" ]
+  then
+        cheque=0
+  fi
   totalBZZ=$(curl -s $DEBUG_API/chequebook/balance  | jq '.totalBalance')
+  if [ -z "$totalBZZ" ]
+  then
+        totalBZZ=0
+  fi
   availableBZZ=$(curl -s $DEBUG_API/chequebook/balance  | jq '.availableBalance')
-  json='{"name":"'"$nodeName"'","peers":'$peers',"diskavail":'$diskavail',"diskfree":'$diskfree',"cheque":'$cheque',"total_bzz":'$(($totalBZZ/$MIN_BZZ_UNIT))',"available_bzz":'$(($availableBZZ/$MIN_BZZ_UNIT))',"total_uncashed":'$(($(countUncashed)/$MIN_BZZ_UNIT))'}'
+  if [ -z "$availableBZZ" ]
+  then
+        availableBZZ=0
+  fi
+  uncashedBZZ=$(countUncashed)
+  if [ -z "$uncashedBZZ" ]
+  then
+        uncashedBZZ=0
+  fi
+  json='{"name":"'"$nodeName"'","peers":'$peers',"diskavail":'$diskavail',"diskfree":'$diskfree',"cheque":'$cheque',"total_bzz":'$(($totalBZZ/$MIN_BZZ_UNIT))',"available_bzz":'$(($availableBZZ/$MIN_BZZ_UNIT))',"total_uncashed":'$(($uncashedBZZ/$MIN_BZZ_UNIT))'}'
   echo $json
 }
 
