@@ -48,7 +48,7 @@ static_configs:
           host: host4
 ```
 3.修改完成保存后运行下面命令启动服务端
-cd ~/swarmon && sudo docker-compose up -d
+cd ~/swarmon_server && sudo docker-compose up -d
 
 此时你应该可以通过浏览器访问主服务器3000端口， 如192.168.1.2:3000 并看到Grafana登录界面。
 
