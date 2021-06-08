@@ -66,6 +66,7 @@ cd ~/swarmon_server && sudo docker-compose up -d
 ### 下载安装集群监控客户端 （每个有节点的服务器都需要安装）
 
 如果需要显示带宽数据请先安装iftop!
+Ubuntu: sudo apt install iftop
 
 请确保3903端口没被占用且可被外部访问
 
