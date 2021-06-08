@@ -9,5 +9,7 @@ wget https://github.com/ytx1991/SwarmMonitoring/raw/main/server/grafana/grafana.
 sudo cp grafana.db /root/swarmon/grafana/grafana.db
 wget https://github.com/ytx1991/SwarmMonitoring/raw/main/server/docker-compose.yaml
 wget https://github.com/ytx1991/SwarmMonitoring/raw/main/server/prometheus.yml
+wget https://github.com/ytx1991/SwarmMonitoring/raw/main/server/update_server.sh
 sudo cp prometheus.yml /root/swarmon/prometheus
 sudo chmod -R 777 /root/swarmon/grafana
+chmod +x update_server.sh
