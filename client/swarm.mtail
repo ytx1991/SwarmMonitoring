@@ -1,6 +1,10 @@
 gauge peers by node
 gauge diskavail
 gauge diskfree
+gauge cpu
+gauge memory
+gauge upload_bandwidth
+gauge download_bandwidth
 gauge cheque by node
 gauge total_bzz by node
 gauge available_bzz by node
@@ -13,4 +17,16 @@ gauge total_uncashed by node
     total_bzz[$node] = $total_bzz
     available_bzz[$node] = $available_bzz
     total_uncashed[$node] = $total_uncashed
+}
+/^CPU:(?P<cpu>[\d\.]+)$/ {
+    cpu = $cpu
+}
+/^MEM:(?P<mem>[\d\.]+)$/ {
+    memory = $mem
+}
+/^Total send rate:[ \t]*(?P<upload>[\d\.]+)KB.*$/ {
+    upload_bandwidth = $upload
+}
+/^Total receive rate:[ \t]*(?P<download>[\d\.]+)KB.*$/ {
+    download_bandwidth = $download
 }

@@ -83,5 +83,10 @@ function makejson(){
   json='{"name":"'"$nodeName"'","peers":'$peers',"diskavail":'$diskavail',"diskfree":'$diskfree',"cheque":'$cheque',"total_bzz":'$(($totalBZZ/$MIN_BZZ_UNIT))',"available_bzz":'$(($availableBZZ/$MIN_BZZ_UNIT))',"total_uncashed":'$(($uncashedBZZ/$MIN_BZZ_UNIT))'}'
   echo $json
 }
-
+#get CPU util
+top -bn1 | grep "Cpu(s)" | sed "s/.*, *\([0-9.]*\)%* id.*/\1/" |awk '{print "CPU:"100 - $1}'
+#get Mem util
+free -t | awk 'NR == 2 {print "MEM:" $3/$2*100}'
 makejson
+#get Network util
+sudo iftop -tB -s 1 -L 1 | grep  "Total send rate.*\|Total rec.*" > ~/swarmon_client/logs/network.log

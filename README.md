@@ -1,8 +1,15 @@
-![效果](screenshot.png)
+![效果](screenshot1.png)
+<br>
+![效果](screenshot2.png)
 <br><br><br>
 ### 请保证每个节点的名称是唯一的! 本方案兼容一机多节点及Docker<br>
 ### 目前仅支持Linux系统<br>
 ### 有问题欢迎到 Discord https://discord.gg/PJwJzCkT4W 咨询
+
+### 如何更新
+#### 客户端需运行对应的update_client.sh脚本进行更新
+
+#### 服务端需运行对应的update_server.sh脚本进行更新 (注意原来的Dashboard会被覆盖，如有做修改请先备份grafana.db)
 
 ### 安装监控服务，仅需在主服务器上安装
 
@@ -57,6 +64,8 @@ cd ~/swarmon_server && sudo docker-compose up -d
 监控面版及数据源应该已经预设好，直接打开便可使用。
 
 ### 下载安装集群监控客户端 （每个有节点的服务器都需要安装）
+
+如果需要显示带宽数据请先安装iftop!
 
 请确保3903端口没被占用且可被外部访问
 
