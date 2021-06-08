@@ -66,16 +66,19 @@ function makejson(){
         cheque=0
   fi
   totalBZZ=$(curl -s $DEBUG_API/chequebook/balance  | jq '.totalBalance')
+  totalBZZ=$(echo $totalBZZ| awk '{printf("%d",$0)}')
   if [ -z "$totalBZZ" ]
   then
         totalBZZ=0
   fi
   availableBZZ=$(curl -s $DEBUG_API/chequebook/balance  | jq '.availableBalance')
+  availableBZZ=$(echo $availableBZZ| awk '{printf("%d",$0)}')
   if [ -z "$availableBZZ" ]
   then
         availableBZZ=0
   fi
   uncashedBZZ=$(countUncashed)
+  uncashedBZZ=$(echo $uncashedBZZ| awk '{printf("%d",$0)}'
   if [ -z "$uncashedBZZ" ]
   then
         uncashedBZZ=0
