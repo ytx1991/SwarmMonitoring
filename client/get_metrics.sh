@@ -78,7 +78,7 @@ function makejson(){
         availableBZZ=0
   fi
   uncashedBZZ=$(countUncashed)
-  uncashedBZZ=$(echo $uncashedBZZ| awk '{printf("%d",$0)}'
+  uncashedBZZ=$(echo $uncashedBZZ| awk '{printf("%d",$0)}')
   if [ -z "$uncashedBZZ" ]
   then
         uncashedBZZ=0
